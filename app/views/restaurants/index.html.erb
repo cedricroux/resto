@@ -1,0 +1,13 @@
+<h1 class="current-type"><%= params[:type] %></h1>
+
+<% if  @restaurants.count == 0 %>
+
+  <h1>There are no restaurants currently in this type</h1>
+
+<% else %>
+
+  <% @restaurants.each do |restaurant| %>
+    <h2><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
+  <% end %>
+
+<% end %>

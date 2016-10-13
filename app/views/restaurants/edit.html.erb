@@ -1,0 +1,9 @@
+<h1>Edit Restaurant</h1>
+
+<%= simple_form_for @restaurant, :html => { :multipart => true } do |f| %>
+  <%= f.select :type_id, @types %>
+  <%= f.input :name, label: "Restaurant Name" %>
+  <%= f.input :description %>
+  <%= f.input :address %>
+  <%= f.button :submit %>
+<% end %>
