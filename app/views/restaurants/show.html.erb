@@ -1,12 +1,12 @@
 <div class="row">
 
-  <div class="col-md-4">
+  <div class="col-md-6">
 
     <%= image_tag @restaurant.restaurant_img.url(:restaurant_show), class: "restaurant-show" %>
 
   </div>
 
-  <div class="col-md-8">
+  <div class="col-md-6">
 
     <div class="restaurant-info">
 
@@ -45,14 +45,14 @@
 
 <div class="links btn-group">
 
-  <%= link_to "Back", root_path, class: "btn btn-custom" %>
+  <%= link_to "Back", root_path, class: "btn btn-custom3" %>
 
   <% if user_signed_in? %>
 
     <% if @restaurant.user_id == current_user.id %>
 
-      <%= link_to "Edit", edit_restaurant_path(@restaurant), class: "btn btn-custom" %>
-      <%= link_to "Delete", restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-custom" %>
+      <%= link_to "Edit", edit_restaurant_path(@restaurant), class: "btn btn-custom3" %>
+      <%= link_to "Delete", restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-custom3" %>
 
     <% end %>
 

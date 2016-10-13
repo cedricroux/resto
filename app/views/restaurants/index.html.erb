@@ -2,16 +2,17 @@
 
 <% if  @restaurants.count == 0 %>
 
-  <h1>There are no restaurants currently in this type</h1>
+  <h1>There are currrently no restaurants in this type</h1>
 
 <% else %>
 
   <div class="row">
 
     <% @restaurants.each do |restaurant| %>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <a href="/restaurants/<%= restaurant.id %>">
           <%= image_tag restaurant.restaurant_img.url(:restaurant_index), class: "restaurant" %>
+          <div id="restaurant-name"><%= restaurant.name %></div>
         </a>
       </div>
       <!-- <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4> -->
