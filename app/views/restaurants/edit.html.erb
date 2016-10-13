@@ -2,6 +2,7 @@
 
 <%= simple_form_for @restaurant, :html => { :multipart => true } do |f| %>
   <%= f.select :type_id, @types %>
+  <%= f.file_field :restaurant_img %>
   <%= f.input :name, label: "Restaurant Name" %>
   <%= f.input :description %>
   <%= f.input :address %>
