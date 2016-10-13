@@ -3,21 +3,19 @@ before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
 before_action :authenticate_user!, only: [:new, :edit]
 
   def index
+    # Search
+    if params[:search]
+      @restaurants = Restaurant.search(params[:search]).order("created_at DESC")
+    else
+      @restaurants = Restaurant.all.order("created_at DESC")
+    end
+    
     if params[:type].blank?
       @restaurants = Restaurant.all.order("created_at DESC")
     else
       @type_id = Type.find_by(name: params[:type]).id
       @restaurants = Restaurant.where(:type_id => @type_id).order("created_at DESC")
     end
-
-    # Search
-    @restaurants = Restaurant.all
-    if params[:search]
-      @restaurants = Restaurant.search(params[:search]).order("created_at DESC")
-    else
-      @restaurants = Restaurant.all.order("created_at DESC")
-    end
-
   end
 
   # Displays the restaurants and its rating. Shows the average rating.

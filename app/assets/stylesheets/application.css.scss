@@ -43,6 +43,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p.alert, p.notice {
 	margin: 0;
+	text-align: center;
 }
 
 
@@ -90,14 +91,6 @@ p.alert, p.notice {
 	position: absolute;
 	top: 17px;
 	left: 680px;
-}
-
-.notice {
-	text-align: center;
-}
-
-.alert {
-	text-align: center;
 }
 
 
