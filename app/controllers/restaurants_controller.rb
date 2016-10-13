@@ -9,6 +9,14 @@ before_action :authenticate_user!, only: [:new, :edit]
       @type_id = Type.find_by(name: params[:type]).id
       @restaurants = Restaurant.where(:type_id => @type_id).order("created_at DESC")
     end
+
+    @restaurants = Restaurant.all
+    if params[:search]
+      @restaurants = Restaurant.search(params[:search]).order("created_at DESC")
+    else
+      @restaurants = Restaurant.all.order("created_at DESC")
+    end
+
   end
 
   def show
