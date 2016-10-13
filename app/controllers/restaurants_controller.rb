@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
 before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
+before_action :authenticate_user!, only: [:new, :edit]
 
   def index
     if params[:type].blank?
@@ -11,6 +12,11 @@ before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
   end
 
   def show
+    if @restaurant.reviews.blank?
+      @average_review = 0
+    else
+      @average_review = @restaurant.reviews.average(:rating).round(2)
+    end
   end
 
   def new
