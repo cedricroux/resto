@@ -10,6 +10,7 @@ before_action :authenticate_user!, only: [:new, :edit]
       @restaurants = Restaurant.where(:type_id => @type_id).order("created_at DESC")
     end
 
+    # Search
     @restaurants = Restaurant.all
     if params[:search]
       @restaurants = Restaurant.search(params[:search]).order("created_at DESC")
@@ -19,6 +20,7 @@ before_action :authenticate_user!, only: [:new, :edit]
 
   end
 
+  # Displays the restaurants and its rating. Shows the average rating.
   def show
     if @restaurant.reviews.blank?
       @average_review = 0
