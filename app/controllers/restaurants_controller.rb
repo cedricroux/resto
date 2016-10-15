@@ -2,8 +2,8 @@ class RestaurantsController < ApplicationController
 before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
 before_action :authenticate_user!, only: [:new, :edit]
 
+  # Search form and dropdown menu. Sorted in descending order.
   def index
-    # Search
     if params[:search]
       @restaurants = Restaurant.search(params[:search]).order("created_at DESC")
     elsif params[:type].present?
@@ -12,8 +12,6 @@ before_action :authenticate_user!, only: [:new, :edit]
     else
       @restaurants = Restaurant.all.order("created_at DESC")
     end
-
-
   end
 
   # Displays the restaurants and its rating. Shows the average rating.
@@ -54,6 +52,7 @@ before_action :authenticate_user!, only: [:new, :edit]
     end
   end
 
+  # Deletes a restaurant.
   def destroy
     @restaurant.destroy
     redirect_to root_path

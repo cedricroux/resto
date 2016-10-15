@@ -1,3 +1,4 @@
+<!-- Generates a form that will be rendered in new.html.erb-->
 <%= simple_form_for @restaurant, :html => { :multipart => true } do |f| %>
   <%= select_tag(:type_id, options_for_select(@types), :prompt => "Select a type") %>
   <%= f.file_field :restaurant_img %>
